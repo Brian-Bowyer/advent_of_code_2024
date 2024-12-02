@@ -34,5 +34,6 @@ def calculate_similarity(left: list[int], right: list[int]):
 
 if __name__ == "__main__":
     left, right = process_file("input.txt")
-    calculate_distances(left, right)
-    calculate_similarity(left, right)
+    answer1 = calculate_distances(left, right)
+    answer2 = calculate_similarity(left, right)
+    print(answer1, answer2)

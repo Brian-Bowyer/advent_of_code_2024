@@ -14,15 +14,14 @@ def process_file(filename: str):
         return list1, list2
 
 
-def main1():
-    l1, l2 = process_file("input.txt")
-    l1_sorted = sorted(l1)
-    l2_sorted = sorted(l2)
+def calculate_distances(left, right):
+    l1_sorted = sorted(left)
+    l2_sorted = sorted(right)
     distances = []
     for pair in zip(l1_sorted, l2_sorted):
         distance = abs(pair[0] - pair[1])
         distances.append(distance)
-    print(sum(distances))
+    return sum(distances)
 
 
 def calculate_similarity(left: list[int], right: list[int]):
@@ -34,4 +33,6 @@ def calculate_similarity(left: list[int], right: list[int]):
 
 
 if __name__ == "__main__":
-    main1()
+    left, right = process_file("input.txt")
+    calculate_distances(left, right)
+    calculate_similarity(left, right)

@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 def process_file(filename: str):
     with open(filename, "r") as f:
         lines = f.readlines()
@@ -20,6 +23,14 @@ def main1():
         distance = abs(pair[0] - pair[1])
         distances.append(distance)
     print(sum(distances))
+
+
+def calculate_similarity(left: list[int], right: list[int]):
+    right_counter = Counter(right)
+    similarity = 0
+    for item in left:
+        similarity += right_counter[item] * item
+    return similarity
 
 
 if __name__ == "__main__":

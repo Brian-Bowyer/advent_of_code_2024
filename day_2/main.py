@@ -9,10 +9,25 @@ def compute_diffs(report: list[int]):
 
 
 def check_diffs(diff: list[int]):
-    if diff[0] < 0:
+    if diff[0] <= 0 or diff[1] <= 0:
         diff = [-1 * val for val in diff]
 
-    return all(0 < val < 4 for val in diff)
+    dampened = False
+    for i, val in enumerate(diff):
+        if 0 < val < 4:
+            continue
+        elif dampened == False:
+            dampened = True
+            if 0 < val + diff[i - 1] < 4:
+                continue
+            elif i + 1 < len(diff) and 0 < val + diff[i + 1] < 4:
+                continue
+            else:
+                return False
+        else:
+            return False
+
+    return True
 
 
 if __name__ == "__main__":
